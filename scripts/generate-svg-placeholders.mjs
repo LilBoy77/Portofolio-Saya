@@ -1,0 +1,83 @@
+import fs from "fs";
+import path from "path";
+
+const projectsDir = "public/images/projects";
+fs.mkdirSync(projectsDir, { recursive: true });
+
+function createMockSVG(title, category, accentColor) {
+  return `<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#090C10"/>
+  <rect width="1200" height="750" fill="url(#bg_grad)"/>
+  
+  <!-- Subtle Grid -->
+  <path d="M0 75H1200M0 150H1200M0 225H1200M0 300H1200M0 375H1200M0 450H1200M0 525H1200M0 600H1200M0 675H1200" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
+  <path d="M120 0V750M240 0V750M360 0V750M480 0V750M600 0V750M720 0V750M840 0V750M960 0V750M1080 0V750" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
+
+  <!-- Glow Halo -->
+  <circle cx="900" cy="250" r="300" fill="${accentColor}" fill-opacity="0.15" filter="blur(100px)"/>
+  
+  <!-- UI Mockup Window -->
+  <rect x="80" y="80" width="1040" height="590" rx="16" fill="#10151C" stroke="white" stroke-opacity="0.12" stroke-width="1.5"/>
+  <rect x="80" y="80" width="1040" height="48" fill="#171D26"/>
+  <circle cx="112" cy="104" r="6" fill="#FF5F56"/>
+  <circle cx="132" cy="104" r="6" fill="#FFBD2E"/>
+  <circle cx="152" cy="104" r="6" fill="#27C93F"/>
+  <rect x="200" y="94" width="400" height="20" rx="6" fill="#090C10" fill-opacity="0.6"/>
+
+  <!-- Dashboard UI Elements -->
+  <rect x="120" y="160" width="240" height="140" rx="12" fill="#171D26" stroke="white" stroke-opacity="0.08"/>
+  <rect x="140" y="184" width="80" height="14" rx="4" fill="${accentColor}" fill-opacity="0.8"/>
+  <rect x="140" y="210" width="140" height="24" rx="4" fill="white" fill-opacity="0.9"/>
+  <rect x="140" y="250" width="180" height="8" rx="4" fill="white" fill-opacity="0.2"/>
+
+  <rect x="380" y="160" width="240" height="140" rx="12" fill="#171D26" stroke="white" stroke-opacity="0.08"/>
+  <rect x="400" y="184" width="80" height="14" rx="4" fill="#38BDF8" fill-opacity="0.8"/>
+  <rect x="400" y="210" width="140" height="24" rx="4" fill="white" fill-opacity="0.9"/>
+  <rect x="400" y="250" width="180" height="8" rx="4" fill="white" fill-opacity="0.2"/>
+
+  <rect x="640" y="160" width="440" height="140" rx="12" fill="#171D26" stroke="white" stroke-opacity="0.08"/>
+  <rect x="660" y="184" width="120" height="14" rx="4" fill="#A78BFA" fill-opacity="0.8"/>
+  <rect x="660" y="214" width="300" height="12" rx="4" fill="white" fill-opacity="0.15"/>
+  <rect x="660" y="238" width="240" height="12" rx="4" fill="white" fill-opacity="0.15"/>
+
+  <!-- Wave Chart Graph Area -->
+  <rect x="120" y="330" width="960" height="300" rx="12" fill="#171D26" stroke="white" stroke-opacity="0.08"/>
+  <path d="M160 560 Q 300 420 450 490 T 750 390 T 1040 440" stroke="${accentColor}" stroke-width="4" fill="none"/>
+  <path d="M160 560 Q 300 420 450 490 T 750 390 T 1040 440 V 600 H 160 Z" fill="url(#chart_grad)" fill-opacity="0.2"/>
+
+  <!-- Centered Branding Overlay -->
+  <rect x="360" y="280" width="480" height="180" rx="20" fill="#090C10" fill-opacity="0.92" stroke="${accentColor}" stroke-opacity="0.5" stroke-width="2"/>
+  <text x="600" y="340" fill="${accentColor}" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="3" text-anchor="middle">${category.toUpperCase()}</text>
+  <text x="600" y="385" fill="#F4F7FB" font-family="sans-serif" font-size="28" font-weight="bold" text-anchor="middle">${title}</text>
+
+  <defs>
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10151C"/>
+      <stop offset="1" stop-color="#090C10"/>
+    </linearGradient>
+    <linearGradient id="chart_grad" x1="600" y1="390" x2="600" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="${accentColor}"/>
+      <stop offset="1" stop-color="${accentColor}" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>`;
+}
+
+const mockups = [
+  { name: "nexus.svg", title: "Nexus Quantum Analytics", category: "Data Platform", accent: "#78A9FF" },
+  { name: "nexus-detail-1.svg", title: "Nexus Realtime Telemetry", category: "Analytics Dashboard", accent: "#78A9FF" },
+  { name: "nexus-detail-2.svg", title: "Nexus High Velocity Stream", category: "Stream Processor", accent: "#78A9FF" },
+  { name: "lumina.svg", title: "Lumina Studio Systems", category: "Design System", accent: "#38BDF8" },
+  { name: "lumina-detail-1.svg", title: "Lumina Accessible Primitives", category: "Component Library", accent: "#38BDF8" },
+  { name: "aetheria.svg", title: "Aetheria Audio Visual", category: "Interactive Experience", accent: "#A78BFA" },
+  { name: "aetheria-detail-1.svg", title: "Aetheria Soundscape Engine", category: "Web Audio API", accent: "#A78BFA" },
+  { name: "hyperion.svg", title: "Hyperion DeFi Protocol", category: "Fintech App", accent: "#F43F5E" }
+];
+
+mockups.forEach(({ name, title, category, accent }) => {
+  const filePath = path.join(projectsDir, name);
+  fs.writeFileSync(filePath, createMockSVG(title, category, accent));
+  console.log("Generated:", filePath);
+});
+
+console.log("SVG Placeholders successfully created.");
