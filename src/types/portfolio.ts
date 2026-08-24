@@ -13,7 +13,7 @@ export interface Identity {
 export interface Socials {
   github: string;
   linkedin: string;
-  instagram: string;
+  instagram?: string;
 }
 
 export interface HeroData {
@@ -46,6 +46,8 @@ export interface Project {
   liveUrl: string;
   sourceUrl: string;
   featured: boolean;
+  context?: string;
+  highlights?: string[];
   problem?: string;
   solution?: string;
   process?: string[];

@@ -17,6 +17,8 @@ export function ScrollProgress() {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
       const totalHeight =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -43,7 +45,7 @@ export function ScrollProgress() {
     <>
       {/* Mobile Top Horizontal Progress Bar */}
       <div
-        className="fixed top-0 left-0 right-0 h-[2px] z-50 bg-accent/20 md:hidden"
+        className="fixed top-0 left-0 right-0 h-[2px] z-50 bg-border md:hidden"
         aria-hidden="true"
       >
         <div
@@ -58,7 +60,7 @@ export function ScrollProgress() {
         aria-label="Section Navigation"
       >
         {/* Section Counter Display */}
-        <div className="font-mono text-xs text-text-secondary tracking-widest bg-surface/80 px-2 py-1 rounded border border-border/50 backdrop-blur-sm">
+        <div className="font-mono text-xs text-text-secondary tracking-widest bg-surface-raised px-2.5 py-1 rounded border border-border">
           <span className="text-accent font-bold">
             {formatNumber(activeSectionIndex + 1)}
           </span>
@@ -76,8 +78,7 @@ export function ScrollProgress() {
                 aria-label={`Scroll to ${sec.label}`}
                 className="group relative flex items-center justify-center p-1.5 focus-visible:outline-none"
               >
-                {/* Tooltip on hover */}
-                <span className="absolute right-8 opacity-0 group-hover:opacity-100 transition-opacity bg-surface text-text-primary font-mono text-[10px] uppercase px-2 py-1 rounded border border-border whitespace-nowrap pointer-events-none">
+                <span className="absolute right-8 opacity-0 group-hover:opacity-100 transition-opacity bg-surface-raised text-text-primary font-mono text-[10px] uppercase px-2 py-1 rounded border border-border whitespace-nowrap pointer-events-none">
                   {sec.label}
                 </span>
 
@@ -85,7 +86,7 @@ export function ScrollProgress() {
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     isActive
                       ? "bg-accent scale-125 ring-4 ring-accent/20"
-                      : "bg-text-secondary/30 group-hover:bg-text-secondary"
+                      : "bg-text-secondary/40 group-hover:bg-text-primary"
                   }`}
                 />
               </a>

@@ -4,23 +4,22 @@ export const portfolio: PortfolioData = {
   identity: {
     name: "Ulil Arsyad Ramadhan",
     shortName: "UAR",
-    role: "Senior Creative Frontend Developer",
-    location: "Indonesia",
+    role: "Junior Creative Full-Stack Developer",
+    location: "Bandung, Indonesia",
     availability: "Available for selected remote & contract work",
-    email: "ulil.arsyad.dev@gmail.com",
+    email: "ulilarsyad011@gmail.com",
     intro:
-      "Saya merancang & membangun pengembahan web yang cepat, sinematik, interaktif, dan berkinerja tinggi dengan perhatian penuh pada detail.",
+      "I design and build fast, cinematic, interactive, and high-performance web experiences, combining modern frontend and backend technologies with a strong focus on clean architecture, seamless user interactions, scalability, and attention to detail.",
     bio: [
-      "Sebagai Creative Developer & Frontend Engineer dengan latar belakang mendalam dalam interaksi web modern, saya menjembatani celah antara estetika desain tingkat tinggi dan arsitektur kode yang tangguh.",
-      "Fokus utama saya adalah membangun aplikasi web modern, platform interaktif, serta sistem antarmuka berbasis Next.js, GSAP, dan TypeScript yang responsif, terakses, dan mulus di semua ukuran layar.",
-      "Saya percaya bahwa produk terbaik lahir dari keseimbangan antara kejelasan navigasi (clarity), estetika yang memikat (spectacle), dan optimasi performa tanpa kompromi."
+      "I’m a Full-Stack Developer with a strong focus on Frontend Development. I build digital products end-to-end—from data architecture and API integration to fast, responsive, and intuitive user interfaces.",
+      "To me, frontend development is more than just making interfaces look good. Every layout, interaction, and animation should serve a purpose: helping users understand the product, accomplish their goals, and enjoy a seamless experience along the way.",
+      "With experience in React, Next.js, Java Spring Boot, backend integration, and database systems, I approach products as complete, interconnected systems. My goal is to create digital experiences that are not only visually refined, but also well-structured, scalable, maintainable, and built to evolve."
     ],
     resumeUrl: "/resume.pdf"
   },
   socials: {
-    github: "https://github.com/ulilarsyad",
-    linkedin: "https://linkedin.com/in/ulilarsyad",
-    instagram: "https://instagram.com/ulilarsyad"
+    github: "https://github.com/LilBoy77",
+    linkedin: "https://www.linkedin.com/in/ulil-arsyad-ramadhan-130651412?utm_source=share_via&utm_content=profile&utm_medium=member_android"
   },
   hero: {
     eyebrow: "Creative Developer & Frontend Engineer — Based in Indonesia",
@@ -30,141 +29,192 @@ export const portfolio: PortfolioData = {
   },
   experiences: [
     {
-      company: "Apex Labs Studio",
-      role: "Lead Creative Developer",
-      period: "2024 — Sekarang",
-      description: "Memimpin pengembangan antarmuka web interaktif, visual storytelling, dan arsitektur micro-frontend berkinerja tinggi.",
-      achievements: [
-        "Meningkatkan skor Lighthouse Performance dari 72 ke 98 pada 12 web portal klien.",
-        "Mengembangkan perpustakaan komponen animasi GSAP & Lenis yang digunakan di seluruh tim.",
-        "Mengurangi LCP rata-rata aplikasi dari 3.4 detik menjadi 1.1 detik."
-      ]
+      company: "Universitas Nasional Pasim",
+      role: "Diploma III in Information Management",
+      period: "2024 - Present",
+      description: "PUB (Pemberdayaan Ummat Berkelanjutan) scholarship student with an accelerated 3-to-2-year program through short semesters at the end of each even semester. Following an intensive programming training program that includes weekly quizzes, assignments, midterms, and final exams consisting of a 10-day project plus presentation.",
+      achievements: []
     },
     {
-      company: "Kinetix Interactive",
-      role: "Senior Frontend Engineer",
-      period: "2022 — 2024",
-      description: "Mengembangkan aplikasi SaaS kompleks, dashboard data interaktif, dan design system enterprise berbasis Next.js & Tailwind CSS.",
-      achievements: [
-        "Merancang design system reusable dengan 40+ komponen accessible (WCAG AA).",
-        "Mengimplementasikan real-time data visualizer menggunakan Canvas 2D & WebGL fallback.",
-        "Meminimalkan bundle size JavaScript hingga 35% melalui code splitting dan dynamic import."
-      ]
+      company: "PUB Training",
+      role: "Logic & Algorithm Programming",
+      period: "Sep – Dec 2024",
+      description: "Studied algorithmic logic using the C programming language through weekly quizzes, assignments, midterm exams, and a 10-day final project. Developed Galeri Resep, an interactive CLI/TUI-based recipe management and gallery application featuring File I/O data persistence and a custom Windows API interface.",
+      achievements: []
     },
     {
-      company: "Vanguard Media",
-      role: "UI/UX & Interactive Developer",
-      period: "2021 — 2022",
-      description: "Membangun website landing page berskala besar, microsite kampanye sinematik, dan motion prototype.",
-      achievements: [
-        "Mengirimkan 15+ microsite kampanye interaktif berkinerja tinggi.",
-        "Mengatur integrasi CMS headless (Sanity & Strapi) untuk alur pengeditan konten yang cepat."
-      ]
+      company: "PUB Training",
+      role: "Data Structure & Database",
+      period: "Jan - May 2025",
+      description: "Studied data structures using C (linked lists, stacks, queues, trees) and database management using MySQL. Each session includes quizzes and assignments, with a written midterm exam and a written final exam.",
+      achievements: []
+    },
+    {
+      company: "PUB Training",
+      role: "Web Fundamentals",
+      period: "Jun – Aug 2025",
+      description: "Learned and applied modern web development fundamentals using HTML5, CSS3, and JavaScript (ES6+) without relying on frontend frameworks. Developed UAR Gallery, an interactive multi-page art gallery web application featuring a modern responsive UI/UX, dynamic REST API integration, and local state management.",
+      achievements: []
+    },
+    {
+      company: "PUB Training",
+      role: "Git & GitHub",
+      period: "Aug 2025",
+      description: "Intensive 1-month training on version control using Git and GitHub. Covered branching, merging, pull requests, and team collaboration. No midterm exam. Includes quizzes, assignments, and a written final exam.",
+      achievements: []
+    },
+    {
+      company: "PUB Training",
+      role: "React Fundamental",
+      period: "Sep - Dec 2025",
+      description: "Learned core React concepts including components, props, state management, React Router, and Context API through weekly quizzes, assignments, midterm exams, and a 10-day final project. Developed Tecca-X, an interactive digital library for AI tools featuring a responsive grid/list catalog, real-time search, category filtering, sorting, and dynamic detail pages.",
+      achievements: []
+    },
+    {
+      company: "PUB Training",
+      role: "React Advanced",
+      period: "Jan – Jun 2026",
+      description: "Deepened my full-stack development skills by building LilTicket, a ticket booking platform for events and concerts. Developed a separated frontend and backend architecture using React.js, Vite, Tailwind CSS, Node.js, Express.js, PostgreSQL, Supabase, JWT, and Xendit.",
+      achievements: []
+    },
+    {
+      company: "PUB Training",
+      role: "Java Fundamental",
+      period: "May - Sep 2026",
+      description: "Learning Java fundamentals including OOP, exception handling, collections, and basic GUI. Each session includes quizzes and assignments. Midterm exam completed; the final exam will be a 10-day project plus presentation. (Currently ongoing)",
+      achievements: []
     }
   ],
   projects: [
     {
-      slug: "nexus-analytics",
+      slug: "lilticket",
       number: "01",
-      title: "Nexus Quantum Analytics",
-      category: "Web Application & Data Platform",
+      title: "LilTicket",
+      category: "Full-Stack Web Application / Event Ticketing",
       year: "2026",
-      summary: "Platform analisis data real-time sinematik dengan visualisasi grafik interaktif dan waktu muat di bawah 1 detik.",
-      impact: "Meningkatkan retensi pengguna sebesar 42% dan memproses 1M+ event per detik.",
-      role: "Lead Frontend Engineer & Motion Designer",
-      stack: ["Next.js 15", "TypeScript", "GSAP", "Tailwind CSS", "Canvas API"],
-      image: "/images/projects/nexus.svg",
-      accent: "#78A9FF",
-      liveUrl: "https://nexus-analytics.demo",
-      sourceUrl: "https://github.com/ulilarsyad/nexus-analytics",
-      featured: true,
-      problem: "Sistem analitik lama lambat, sarat beban JavaScript, dan memiliki antarmuka yang kaku sehingga pengguna kesulitan membaca wawasan bisnis secara cepat.",
-      solution: "Kami membangun ulang seluruh antarmuka menggunakan Next.js App Router dengan arsitektur streaming data real-time, grafik Canvas 2D yang dipercepat hardware, serta transisi GSAP yang memikat.",
-      process: [
-        "Audit arsitektur lama & identifikasi bottleneck rendering UI.",
-        "Penyusunan design tokens dan komponen UI modular berkemampuan dark mode sinematik.",
-        "Integrasi rendering Canvas kustom untuk grafik tren tinggi.",
-        "Pengujian performa ekstrem pada koneksi 3G dan perangkat mobile kelas menengah."
+      summary:
+        "An end-to-end event and concert ticketing platform covering event discovery, ticket reservation, secure checkout, and QR-code check-in validation. Built with React and Express, featuring JWT authentication, Xendit payment gateway integration, QR code issuance, and an administrative dashboard.",
+      impact: "Integrated e-ticketing ecosystem with instant QR Code validation and automated Xendit payment webhooks.",
+      role: "Full-Stack Development",
+      stack: [
+        "React",
+        "Express.js",
+        "PostgreSQL",
+        "Supabase",
+        "Tailwind CSS",
+        "JWT",
+        "Xendit",
+        "QR Code"
       ],
-      gallery: [
-        "/images/projects/nexus-detail-1.svg",
-        "/images/projects/nexus-detail-2.svg"
-      ]
+      image: "/images/projects/lilticket.webp",
+      accent: "#455CE9",
+      liveUrl: "https://lilticket-booking-frontend.vercel.app/",
+      sourceUrl: "https://github.com/LilBoy77",
+      featured: true,
+      context: "React Advanced Project",
+      highlights: [
+        "Customer and administrator authentication",
+        "Event search, category filters, and ticket booking",
+        "Xendit payment gateway with automated webhook processing",
+        "Digital e-ticket issuance with QR Code check-in scanner",
+        "Administrative dashboard for event and order management"
+      ],
+      problem:
+        "Traditional ticket reservation systems frequently suffer from friction in real-time payment confirmation, slow manual gate verification during live events, and the absence of an efficient analytics dashboard for event organizers.",
+      solution:
+        "LilTicket combines a robust Express.js RESTful API and PostgreSQL/Supabase database with a fast, intuitive React frontend. Automated Xendit webhooks instantly confirm transactions, automatically generating unique QR-coded e-tickets for seamless gate check-ins.",
+      process: [
+        "Architected the relational database schema and implemented dual-role JWT authentication (Admin & Customer).",
+        "Integrated Xendit API payment gateway with webhook handlers for real-time transaction lifecycle updates.",
+        "Engineered the QR-coded e-ticket generator and live gate scanner validation module.",
+        "Built an administrative analytics dashboard for monitoring ticket quotas, event status, and transaction history."
+      ],
+      gallery: ["/images/projects/lilticket.webp"]
     },
     {
-      slug: "lumina-design-system",
+      slug: "tecca-x",
       number: "02",
-      title: "Lumina Studio Systems",
-      category: "Design System & Core Library",
+      title: "Tecca-X",
+      category: "Frontend Web Application / AI Directory",
       year: "2025",
-      summary: "Design system premium berbasis React & Tailwind CSS untuk aplikasi enterprise dengan kepatuhan penuh WCAG 2.1 AA.",
-      impact: "Mempercepat waktu rilis fitur baru hingga 60% pada 4 produk utama perusahaan.",
-      role: "Design System Architect",
-      stack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Storybook"],
-      image: "/images/projects/lumina.svg",
+      summary:
+        "An interactive digital library for discovering and exploring AI tools categorized by use case, pricing model, and popularity. Features authentication, role-based access for Admin and User, full CRUD management, real-time search, category filtering, and a responsive layout.",
+      impact: "Structured AI discovery platform with real-time multi-filter search & role-based access control.",
+      role: "Frontend Development",
+      stack: [
+        "React",
+        "Vite",
+        "JavaScript",
+        "Tailwind CSS",
+        "React Router",
+        "Context API",
+        "Framer Motion"
+      ],
+      image: "/images/projects/tecca-x.webp",
       accent: "#38BDF8",
-      liveUrl: "https://lumina-system.demo",
-      sourceUrl: "https://github.com/ulilarsyad/lumina-system",
+      liveUrl: "https://uas-ulil-react.vercel.app/",
+      sourceUrl: "https://github.com/LilBoy77",
       featured: true,
-      problem: "Duplikasi komponen antarmuka antar-tim menimbulkan ketidakstabilan visual dan menurunkan konsistensi brand serta aksesibilitas pengguna.",
-      solution: "Merancang Lumina: sistem antarmuka berbasis headless primitives (Radix UI) yang dikombinasikan dengan utility Tailwind CSS dan token warna yang dikurasi secara terpusat.",
-      process: [
-        "Investigasi kebutuhan 12 tim pengembang dan desainer produk.",
-        "Penyusunan panduan aksesibilitas keyboard dan pembaca layar.",
-        "Pembuatan komponen interaktif dengan animasi mikro Framer Motion yang halus.",
-        "Dokumentasi interaktif menggunakan Storybook dan Next.js."
+      context: "UAS React Project 2025",
+      highlights: [
+        "Interactive AI directory with dynamic Grid and List views",
+        "Real-time search, category filtering, and sorting",
+        "Authentication and protected routes",
+        "Role-based access control for Admins and Users",
+        "Complete CRUD capabilities for managing AI tool entries"
       ],
-      gallery: [
-        "/images/projects/lumina-detail-1.svg"
-      ]
+      problem:
+        "The artificial intelligence ecosystem is expanding rapidly, making it difficult for users to evaluate and find the right AI tools tailored to their workflow, budget, and feature requirements.",
+      solution:
+        "Tecca-X provides a centralized discovery hub with real-time keyword search, dynamic Grid/List view switching, and secure role-based CRUD operations for managing tools seamlessly.",
+      process: [
+        "Architected client-side state management using React Context API and established role-based route protection.",
+        "Crafted interactive UI components with fluid Framer Motion micro-animations and responsive Tailwind CSS layouts.",
+        "Developed multi-property search algorithms, instant category filters, and popularity sorting logic.",
+        "Conducted comprehensive CRUD feature testing and performance optimizations using Vite."
+      ],
+      gallery: ["/images/projects/tecca-x.webp"]
     },
     {
-      slug: "Aetheria-creative-engine",
+      slug: "uar-gallery",
       number: "03",
-      title: "Aetheria Audio Visual",
-      category: "Interactive Web Experience",
+      title: "UAR Gallery",
+      category: "Frontend Web Application / Art Gallery",
       year: "2025",
-      summary: "Pengalaman web audio-visual immersive dengan scroll storytelling sinematik dan efek cahaya ambient ambient dynamic.",
-      impact: "Mencapai 250k+ pengunjung unik di bulan pertama tanpa iklan berbayar.",
-      role: "Creative Developer",
-      stack: ["Next.js", "GSAP ScrollTrigger", "Lenis", "Web Audio API", "Tailwind CSS"],
-      image: "/images/projects/aetheria.svg",
-      accent: "#A78BFA",
-      liveUrl: "https://aetheria-experience.demo",
-      sourceUrl: "https://github.com/ulilarsyad/aetheria-experience",
-      featured: true,
-      problem: "Landing page kampanye album musik generik tidak mampu memberikan keterikatan emosional dan pengalaman visual yang berkesan.",
-      solution: "Menggabungkan GSAP ScrollTrigger dengan Web Audio API untuk menyelaraskan animasi scroll dengan respons frekuensi audio secara halus.",
-      process: [
-        "Penyusunan alur cerita vertikal sinematik dari bab 1 hingga bab 6.",
-        "Pengalaman audio opsional dengan tombol mute yang terlihat dan teruji keyboard.",
-        "Optimasi fallback CSS untuk perangkat berdaya rendah dan mode prefers-reduced-motion."
+      summary:
+        "An interactive multi-page art gallery web application with modern responsive UI/UX, video hero section, dynamic external REST API data consumption, real-time search, sorting, dynamic pagination, and localStorage-based favorites system.",
+      impact: "Dynamic art discovery web app with real-time REST API consumption and local favorites state management.",
+      role: "Frontend Development",
+      stack: [
+        "HTML5",
+        "CSS3",
+        "JavaScript (ES6+)",
+        "REST API",
+        "LocalStorage",
+        "Git"
       ],
-      gallery: [
-        "/images/projects/aetheria-detail-1.svg"
-      ]
-    },
-    {
-      slug: "hyperion-finance",
-      number: "04",
-      title: "Hyperion DeFi Protocol",
-      category: "Fintech & Web3 App",
-      year: "2024",
-      summary: "Dashboard keuangan terdesentralisasi yang cepat, aman, dan dirancang dengan estetika industrial modern.",
-      impact: "Mengurangi bounce rate sebesar 38% dan memproses transaksi senilai $50M+ USD.",
-      role: "Senior Frontend Engineer",
-      stack: ["Next.js", "TypeScript", "Ethers.js", "Tailwind CSS", "Recharts"],
-      image: "/images/projects/hyperion.svg",
-      accent: "#F43F5E",
-      liveUrl: "https://hyperion-fi.demo",
-      sourceUrl: "",
+      image: "",
+      accent: "#8B5CF6",
+      liveUrl: "",
+      sourceUrl: "https://github.com/LilBoy77",
       featured: true,
-      problem: "Aplikasi DeFi umumnya memiliki UI rumit, sarat informasi statistik berantakan, dan lambat pada koneksi mobile.",
-      solution: "Antarmuka Hyperion dirancang minimalis dan tajam dengan pembagian area kerja yang jelas serta feedback transaksi seketika.",
+      context: "Web Fundamentals Project 2025",
+      highlights: [
+        "Interactive multi-page gallery with video hero section",
+        "Real-time external REST API integration (Fetch & Async/Await)",
+        "Keyword search, sorting, and dynamic pagination",
+        "Local state management for favorites with localStorage",
+        "Dynamic detail view handling via URL query parameters"
+      ],
+      problem:
+        "Digital art enthusiasts need a fluid, accessible, and interactive platform to discover, sort, and save artworks without clunky reloads or complex dependencies.",
+      solution:
+        "UAR Gallery provides a lightweight vanilla JavaScript architecture that communicates asynchronously with art APIs, rendering fast responsive layouts and persistent client-side favorites.",
       process: [
-        "Uji keterbacaan kontras tinggi dan hierarki tipografi besar.",
-        "Optimasi alur transaksi dari koneksi dompet hingga konfirmasi blok.",
-        "Pengujian performa tinggi pada jaringan buruk."
+        "Designed mobile-first responsive layout with custom CSS3 grid and video hero header.",
+        "Implemented asynchronous REST API fetching pipelines with dynamic error handling.",
+        "Built instant search, multi-field sorting, and client-side pagination components.",
+        "Integrated localStorage state persistence for marking and reviewing favorite art pieces."
       ],
       gallery: []
     }
@@ -172,52 +222,76 @@ export const portfolio: PortfolioData = {
   capabilities: [
     {
       title: "Build",
-      subtitle: "Frontend Architecture & Applications",
-      description: "Membangun arsitektur web modern yang bersih, terskala, dan aman dari tipe error dengan TypeScript & React.",
-      skills: ["React & Next.js App Router", "TypeScript Strict Architecture", "REST & GraphQL API Integration", "State Management & Server Components", "Performance Optimization & Auditing"]
+      subtitle: "Full-Stack Web Development",
+      description:
+        "Building scalable full-stack web applications with JavaScript, React.js, Node.js, and Express.js — from REST API design to database integration.",
+      skills: [
+        "React.js & Vite",
+        "Node.js & Express.js",
+        "REST API Design",
+        "JWT Authentication & RBAC",
+        "PostgreSQL & Supabase",
+        "State Management (Context API)"
+      ]
     },
     {
       title: "Craft",
-      subtitle: "Interaction & Design System",
-      description: "Menghadirkan rasa, ritme, animasi mikro, dan sistem komponen yang menawan tanpa mengorbankan aksesibilitas.",
-      skills: ["GSAP ScrollTrigger & Pinned Storytelling", "Smooth Scrolling (Lenis Integration)", "Framer Motion Microinteractions", "Tailwind CSS & Token Systems", "WCAG 2.1 AA Accessibility Standards"]
+      subtitle: "Interaction & UI Development",
+      description:
+        "Crafting responsive, accessible interfaces with reusable component patterns, clean UX feedback, and smooth micro-interactions.",
+      skills: [
+        "Tailwind CSS & Bootstrap",
+        "Framer Motion Animations",
+        "React Router DOM",
+        "Responsive, Mobile-First Design",
+        "Toast Notifications & UX Feedback",
+        "Role-Based UI (Admin & User Views)"
+      ]
     },
     {
       title: "Ship",
-      subtitle: "Performance & Quality Engineering",
-      description: "Menjamin kecepatan waktu muat, keandalan deployment, SEO optimal, serta pengalaman mobile yang sempurna.",
-      skills: ["Core Web Vitals & Lighthouse Optimization", "Next.js Dynamic Importing & Code Splitting", "SEO, OpenGraph & Structured JSON-LD Data", "Cross-browser & Cross-device Testing", "Vercel Deployment & Continuous Integration"]
+      subtitle: "Integration & Quality Engineering",
+      description:
+        "Ensuring reliable authentication, secure payment flows, and clean, deployment-ready code across every project.",
+      skills: [
+        "Payment Gateway Integration (Xendit) & Webhooks",
+        "Git & GitHub Version Control",
+        "Docker Containerization",
+        "Postman API Testing",
+        "CRUD & Data Validation",
+        "Cross-Browser & Cross-Device Testing"
+      ]
     }
   ],
   values: [
     {
       number: "01",
-      title: "Clarity Over Noise",
-      description: "Desain yang hebat harus terasa jernih sebelum terlihat cerdas. Elemen visual melayani pesan, bukan sebaliknya."
+      title: "Frontend With Purpose",
+      description: "Every component, interaction, and animation is thoughtfully designed to enhance the user experience—not simply to serve as decoration."
     },
     {
       number: "02",
-      title: "Motion With Purpose",
-      description: "Setiap gerakan, transisi, dan scroll pin diciptakan untuk memandu perhatian pengguna dan menceritakan produk."
+      title: "Full-Stack Perspective",
+      description: "I understand the product as a complete system, from the interface and state management to APIs, authentication, backend services, and databases."
     },
     {
       number: "03",
-      title: "Performance Is Design",
-      description: "Kecepatan muat dan responsivitas antarmuka adalah bagian utama dari kenyamanan pengguna yang sejati."
+      title: "Performance Is Experience",
+      description: "Speed, accessibility, and responsiveness are not just technical requirements—they are essential parts of an experience that users feel in every interaction."
     }
   ],
   skills: [
+    "React.js",
     "TypeScript",
-    "React",
     "Next.js",
-    "Tailwind CSS",
-    "GSAP ScrollTrigger",
-    "Lenis",
-    "Framer Motion",
     "Node.js",
+    "Express.js",
     "PostgreSQL",
-    "Canvas 2D API",
-    "Accessibility (WCAG)",
-    "Vercel"
+    "Supabase",
+    "Tailwind CSS",
+    "Framer Motion",
+    "GSAP",
+    "Git",
+    "Docker"
   ]
 };

@@ -48,7 +48,7 @@ export function ProjectChapter({ project, index }: ProjectChapterProps) {
     if (visual) {
       timeline.fromTo(
         visual,
-        { scale: 0.9, opacity: 0.5 },
+        { scale: 0.92, opacity: 0.6 },
         { scale: 1, opacity: 1, duration: 0.5, ease: "power2.out" }
       );
     }
@@ -56,8 +56,8 @@ export function ProjectChapter({ project, index }: ProjectChapterProps) {
     if (numberEl) {
       timeline.fromTo(
         numberEl,
-        { y: 50, opacity: 0.1 },
-        { y: -15, opacity: 0.25, duration: 0.5 },
+        { y: 40, opacity: 0.1 },
+        { y: -10, opacity: 0.25, duration: 0.5 },
         "<"
       );
     }
@@ -74,16 +74,8 @@ export function ProjectChapter({ project, index }: ProjectChapterProps) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen w-full flex items-center justify-center py-20 border-b border-border/20 overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center py-20 border-b border-border/40 overflow-hidden"
     >
-      {/* Background Accent Mesh */}
-      <div
-        className="absolute inset-0 opacity-15 pointer-events-none transition-opacity duration-1000"
-        style={{
-          background: `radial-gradient(circle at ${index % 2 === 0 ? "70% 30%" : "30% 70%"}, ${project.accent} 0%, transparent 65%)`,
-        }}
-      />
-
       <div className="container-wide relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Visual Column */}
@@ -102,24 +94,23 @@ export function ProjectChapter({ project, index }: ProjectChapterProps) {
             }`}
           >
             {/* Number & Category */}
-            <div className="relative flex items-baseline justify-between border-b border-border/50 pb-4">
+            <div className="relative flex items-baseline justify-between border-b border-border pb-4">
               <div
                 ref={numberRef}
-                className="absolute -top-12 -left-4 font-mono text-7xl font-extrabold select-none opacity-20 pointer-events-none"
-                style={{ color: project.accent }}
+                className="absolute -top-12 -left-4 font-serif text-8xl font-normal select-none opacity-20 text-accent pointer-events-none"
               >
                 {project.number}
               </div>
               <span className="font-mono text-xs uppercase tracking-widest text-text-secondary">
                 {project.category}
               </span>
-              <span className="font-mono text-xs text-text-secondary/70">
+              <span className="font-mono text-xs text-text-secondary">
                 {project.year}
               </span>
             </div>
 
-            {/* Title */}
-            <h3 className="font-h2 text-text-primary font-bold tracking-tight">
+            {/* Title (Editorial Serif) */}
+            <h3 className="font-serif text-4xl sm:text-5xl text-text-primary font-normal tracking-tight">
               <Link
                 href={`/projects/${project.slug}`}
                 className="hover:text-accent transition-colors focus-visible:outline-none"
@@ -135,7 +126,7 @@ export function ProjectChapter({ project, index }: ProjectChapterProps) {
 
             {/* Impact Metric */}
             {project.impact && (
-              <div className="p-4 rounded-xl bg-surface-raised/80 border border-white/10 font-mono text-xs text-text-primary">
+              <div className="p-4 rounded-xl bg-surface border border-border font-mono text-xs text-text-primary">
                 <span className="text-accent font-bold">IMPACT // </span>
                 {project.impact}
               </div>
@@ -146,7 +137,7 @@ export function ProjectChapter({ project, index }: ProjectChapterProps) {
               {project.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="font-mono text-xs px-3 py-1.5 rounded-full bg-surface border border-border text-text-secondary"
+                  className="font-mono text-xs px-3 py-1.5 rounded-full bg-surface-raised border border-border text-text-secondary"
                 >
                   {tech}
                 </span>

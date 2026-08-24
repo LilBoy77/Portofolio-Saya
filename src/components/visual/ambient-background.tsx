@@ -42,26 +42,16 @@ export function AmbientBackground() {
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden transition-opacity duration-1000"
       aria-hidden="true"
     >
-      {/* Primary Radial Glow */}
+      {/* Subtle Warm Paper Ambient Lighting */}
       <div
-        className="absolute -inset-[100px] opacity-40 blur-[120px] transition-all duration-700 ease-out"
+        className="absolute -inset-[100px] opacity-30 blur-[100px] transition-all duration-700 ease-out"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(120, 169, 255, 0.18) 0%, rgba(16, 21, 28, 0.05) 50%, transparent 80%)`,
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(183, 72, 43, 0.08) 0%, rgba(231, 224, 213, 0.05) 50%, transparent 80%)`,
         }}
       />
 
-      {/* Secondary Ambient Accent Glow */}
-      <div
-        className="absolute top-1/4 -right-[20%] h-[600px] w-[600px] rounded-full opacity-20 blur-[160px]"
-        style={{
-          background: "radial-gradient(circle, rgba(167, 139, 250, 0.2) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Subtle Grid Accent */}
-      <div
-        className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"
-      />
+      {/* Crisp Editorial Grid Lines */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(28,26,23,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(28,26,23,0.03)_1px,transparent_1px)] bg-[size:6rem_6rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-80" />
     </div>
   );
 }

@@ -1,89 +1,164 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Check, Copy } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Mail } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
-import { SectionLabel } from "../ui/section-label";
-import { MagneticLink } from "../ui/magnetic-link";
-import { ExternalLink } from "../ui/external-link";
-import { Button } from "../ui/button";
+import { CircularButton } from "../ui/circular-button";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function ContactSection() {
+  const containerRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText(portfolio.identity.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  useEffect(() => {
+    const container = containerRef.current;
+    const heading = headingRef.current;
+
+    if (!container || !heading) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        heading.querySelectorAll(".line-inner"),
+        { yPercent: 110, rotate: 1.5, opacity: 0 },
+        {
+          yPercent: 0,
+          rotate: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 85%",
+            end: "top 45%",
+            scrub: 0.8,
+          },
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const copyEmail = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(portfolio.identity.email);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = portfolio.identity.email;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+      setCopied(true);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2500);
+    } catch (err) {
+      console.error("Failed to copy email: ", err);
+    }
   };
 
   return (
     <section
+      ref={containerRef}
       id="contact"
-      className="min-h-[90svh] py-28 flex flex-col justify-between relative z-10"
+      className="min-h-[90svh] py-24 sm:py-32 bg-[#1C1D20] text-white flex flex-col justify-between relative z-10"
     >
       <div className="container-custom my-auto">
-        <SectionLabel number="05" label="The Last Frame" />
+        {/* Section Label */}
+        <div className="font-mono text-xs uppercase tracking-widest text-white/60 mb-10 flex items-center gap-3">
+          <span className="text-[#455CE9] font-bold">05 //</span>
+          <span>CONTACT & COLLABORATION</span>
+        </div>
 
-        <div className="max-w-4xl flex flex-col items-start gap-8">
-          <h2 className="font-h1 text-text-primary font-extrabold tracking-tight">
-            Have an idea worth <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-text-primary to-text-secondary">
-              bringing to life?
-            </span>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-10 sm:mb-12">
+          <h2
+            ref={headingRef}
+            className="font-h1 font-medium tracking-tighter text-white leading-[0.92] max-w-4xl flex flex-col gap-2"
+          >
+            <div className="line-mask">
+              <span className="line-inner">Let&apos;s work</span>
+            </div>
+            <div className="line-mask">
+              <span className="line-inner text-white/90">together.</span>
+            </div>
           </h2>
 
-          <p className="text-body-large text-text-secondary max-w-2xl leading-relaxed">
-            Saya selalu terbuka untuk mendiskusikan proyek baru, eksplorasi teknologi kreatif, atau posisi engineering yang berkesan. Mari berbicara.
-          </p>
-
-          {/* Magnetic CTA Button */}
-          <div className="pt-4">
-            <MagneticLink strength={0.4}>
-              <Button
-                href={`mailto:${portfolio.identity.email}`}
-                size="lg"
-                variant="primary"
-                className="text-lg px-10 py-5"
-              >
-                Start a Conversation ↗
-              </Button>
-            </MagneticLink>
+          <div className="flex-shrink-0">
+            <CircularButton
+              href={`mailto:${portfolio.identity.email}`}
+              label="Get in touch"
+              ariaLabel="Send an email to Ulil Arsyad"
+              size="lg"
+            />
           </div>
+        </div>
 
-          {/* Copyable Email Box */}
-          <div className="flex flex-wrap items-center gap-4 p-4 rounded-2xl bg-surface border border-border mt-6">
-            <div className="flex items-center gap-3 text-text-primary font-mono text-sm">
-              <Mail className="w-4 h-4 text-accent" />
+        {/* Copyable Email & Social Links Baseline Aligned */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-10 border-t border-white/15">
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+            <a
+              href={`mailto:${portfolio.identity.email}`}
+              aria-label="Send an email to Ulil Arsyad"
+              className="font-mono text-xs sm:text-sm text-white hover:text-[#455CE9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#455CE9] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1D20] rounded transition-colors flex items-center gap-2"
+            >
+              <Mail className="w-4 h-4 text-[#455CE9]" />
               <span>{portfolio.identity.email}</span>
-            </div>
+            </a>
+
             <button
               onClick={copyEmail}
-              className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-raised border border-border/80 text-text-secondary hover:text-text-primary hover:border-accent transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
-              aria-label="Copy email address"
+              type="button"
+              aria-label={copied ? "Email address copied" : "Copy email address"}
+              className="px-3 py-1.5 rounded-full border border-white/20 text-xs font-mono text-white/70 hover:border-[#455CE9] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#455CE9] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1D20] transition-colors cursor-pointer"
             >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400">COPIED!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  <span>COPY EMAIL</span>
-                </>
-              )}
+              {copied ? "Copied" : "Copy"}
             </button>
           </div>
 
-          {/* Social Media Links */}
-          <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-border/40 w-full text-sm">
-            <ExternalLink href={portfolio.socials.github}>GitHub</ExternalLink>
-            <ExternalLink href={portfolio.socials.linkedin}>LinkedIn</ExternalLink>
+          <div className="flex items-center gap-6 font-mono text-xs text-white/70 uppercase tracking-widest">
+            <a
+              href={portfolio.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#455CE9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#455CE9] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1D20] rounded transition-colors"
+            >
+              GitHub ↗
+            </a>
+            <a
+              href={portfolio.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#455CE9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#455CE9] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1D20] rounded transition-colors"
+            >
+              LinkedIn ↗
+            </a>
             {portfolio.socials.instagram && (
-              <ExternalLink href={portfolio.socials.instagram}>
-                Instagram
-              </ExternalLink>
+              <a
+                href={portfolio.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#455CE9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#455CE9] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1D20] rounded transition-colors"
+              >
+                Instagram ↗
+              </a>
             )}
           </div>
         </div>

@@ -1,110 +1,152 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronDown, CheckCircle2 } from "lucide-react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { portfolio } from "@/data/portfolio";
-import { SectionLabel } from "../ui/section-label";
-import { Reveal } from "../motion/reveal";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function CapabilitiesSection() {
-  const [activeTab, setActiveTab] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const heading = headingRef.current;
+    const cards = cardsRef.current.filter(Boolean);
+
+    if (!container || !heading || cards.length === 0) return;
+
+    const ctx = gsap.context(() => {
+      // Headline reveal
+      gsap.fromTo(
+        heading.querySelectorAll(".line-inner"),
+        { yPercent: 110, rotate: 1.5, opacity: 0 },
+        {
+          yPercent: 0,
+          rotate: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 85%",
+            end: "top 45%",
+            scrub: 0.8,
+          },
+        }
+      );
+
+      // Cards reveal
+      gsap.fromTo(
+        cards,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 75%",
+            end: "top 35%",
+            scrub: 0.8,
+          },
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
+      ref={containerRef}
       id="capabilities"
-      className="py-24 lg:py-36 border-b border-border/30 relative z-10"
+      className="py-24 sm:py-32 bg-[#F1F1F1] text-[#1C1D20] relative z-10 border-b border-border/40"
     >
-      <div className="container-custom mb-16">
-        <SectionLabel number="04" label="Capabilities & Tech Stack" />
-        <h2 className="font-h2 text-text-primary font-bold tracking-tight">
-          What I Bring to the Table
-        </h2>
-      </div>
-
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column Tabs */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            {portfolio.capabilities.map((cap, idx) => {
-              const isActive = activeTab === idx;
-              return (
-                <button
-                  key={cap.title}
-                  onClick={() => setActiveTab(idx)}
-                  className={`flex flex-col text-left p-6 rounded-2xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                    isActive
-                      ? "bg-surface-raised border-accent shadow-[0_0_30px_rgba(120,169,255,0.15)]"
-                      : "bg-surface/60 border-border/60 hover:border-text-secondary/50"
-                  }`}
-                >
-                  <div className="flex items-center justify-between w-full mb-2">
-                    <span className="font-mono text-xs font-bold text-accent">
-                      0{idx + 1} {"//"} AREA
-                    </span>
-                    <ChevronDown
-                      className={`w-5 h-5 transition-transform lg:-rotate-90 ${
-                        isActive ? "text-accent" : "text-text-secondary"
-                      }`}
-                    />
-                  </div>
-                  <h3 className="font-h3 text-text-primary font-bold">
-                    {cap.title}
-                  </h3>
-                  <span className="text-xs font-mono text-text-secondary mt-1">
-                    {cap.subtitle}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right Column Active Detail Drawer */}
-          <div className="lg:col-span-7">
-            <Reveal key={activeTab} direction="left">
-              <div className="p-8 sm:p-10 rounded-2xl border border-border/80 bg-surface/90 backdrop-blur-md flex flex-col gap-8 shadow-2xl min-h-[380px] justify-between">
-                <div>
-                  <span className="font-mono text-xs text-accent tracking-widest uppercase">
-                    AREA DETAIL — {portfolio.capabilities[activeTab].title}
-                  </span>
-                  <h4 className="font-h3 text-text-primary font-bold mt-2 mb-4">
-                    {portfolio.capabilities[activeTab].subtitle}
-                  </h4>
-                  <p className="text-text-secondary text-body-large leading-relaxed">
-                    {portfolio.capabilities[activeTab].description}
-                  </p>
-                </div>
-
-                <div className="border-t border-border/40 pt-6">
-                  <span className="font-mono text-xs text-text-primary font-bold block mb-4">
-                    CORE SKILLS & METHODOLOGIES:
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {portfolio.capabilities[activeTab].skills.map((skill) => (
-                      <div
-                        key={skill}
-                        className="flex items-center gap-2 text-sm text-text-secondary bg-surface-raised/60 p-3 rounded-lg border border-white/5"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
-                        <span>{skill}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
+        {/* Section Label */}
+        <div className="font-mono text-xs uppercase tracking-widest text-[#1C1D20]/60 mb-12 flex items-center gap-3">
+          <span className="text-[#455CE9] font-bold">04 //</span>
+          <span>CAPABILITIES & ARCHITECTURE</span>
         </div>
 
-        {/* Slow Decorative Marquee Banner */}
-        <div className="mt-20 py-6 border-y border-border/30 overflow-hidden relative group">
-          <div className="flex w-max gap-8 animate-[marquee_30s_linear_infinite] group-hover:[animation-play-state:paused]">
+        <h2
+          ref={headingRef}
+          className="font-h2 font-medium tracking-tight text-[#1C1D20] leading-[0.98] mb-16 max-w-4xl"
+        >
+          <div className="line-mask">
+            <span className="line-inner">Services & Expertise</span>
+          </div>
+        </h2>
+
+        {/* 3 Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {portfolio.capabilities.map((cap, idx) => (
+            <div
+              key={cap.title}
+              ref={(el) => {
+                cardsRef.current[idx] = el;
+              }}
+              className="flex flex-col justify-between p-8 rounded-2xl border border-[#1C1D20]/15 bg-white shadow-sm hover:border-[#455CE9] transition-colors duration-300 min-h-[360px]"
+            >
+              <div>
+                <span className="font-mono text-xs font-bold text-[#455CE9] block mb-4">
+                  0{idx + 1} {"//"} {cap.title.toUpperCase()}
+                </span>
+                <h3 className="font-sans text-2xl font-medium tracking-tight text-[#1C1D20] mb-3">
+                  {cap.subtitle}
+                </h3>
+                <p className="text-xs text-[#1C1D20]/75 font-sans leading-relaxed mb-6">
+                  {cap.description}
+                </p>
+              </div>
+
+              <div className="border-t border-[#1C1D20]/10 pt-4 flex flex-wrap gap-1.5">
+                {cap.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="font-mono text-[11px] px-2.5 py-1 rounded-full bg-[#F1F1F1] border border-[#1C1D20]/10 text-[#1C1D20]/80"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Marquee Banner */}
+        <div className="mt-20 py-6 border-y border-[#1C1D20]/15 overflow-hidden relative select-none">
+          {/* Subtle edge fade masks */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#F1F1F1] to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#F1F1F1] to-transparent z-10" />
+
+          <div className="animate-marquee flex w-max gap-8 items-center">
+            {/* First half */}
             {[...portfolio.skills, ...portfolio.skills].map((skill, idx) => (
               <div
-                key={idx}
-                className="flex items-center gap-4 text-sm font-mono text-text-secondary/70 uppercase tracking-widest"
+                key={`a-${idx}`}
+                className="flex items-center gap-4 text-xs font-mono text-[#1C1D20]/75 uppercase tracking-widest flex-shrink-0"
               >
-                <span>{skill}</span>
-                <span className="text-accent">•</span>
+                <span className="hover:text-[#455CE9] transition-colors">{skill}</span>
+                <span className="text-[#455CE9] font-bold">•</span>
+              </div>
+            ))}
+            {/* Second half for infinite seamless loop */}
+            {[...portfolio.skills, ...portfolio.skills].map((skill, idx) => (
+              <div
+                key={`b-${idx}`}
+                className="flex items-center gap-4 text-xs font-mono text-[#1C1D20]/75 uppercase tracking-widest flex-shrink-0"
+              >
+                <span className="hover:text-[#455CE9] transition-colors">{skill}</span>
+                <span className="text-[#455CE9] font-bold">•</span>
               </div>
             ))}
           </div>

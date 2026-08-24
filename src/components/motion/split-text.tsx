@@ -37,10 +37,10 @@ export function SplitText({ text, className = "" }: SplitTextProps) {
         wordElements.forEach((el, index) => {
           if (index <= activeCount) {
             el.classList.add("text-text-primary");
-            el.classList.remove("text-text-secondary/30");
+            el.classList.remove("text-text-secondary/35");
           } else {
             el.classList.remove("text-text-primary");
-            el.classList.add("text-text-secondary/30");
+            el.classList.add("text-text-secondary/35");
           }
         });
       },
@@ -54,12 +54,12 @@ export function SplitText({ text, className = "" }: SplitTextProps) {
   return (
     <div
       ref={containerRef}
-      className={`font-h2 leading-tight tracking-tight ${className}`}
+      className={`font-serif text-3xl sm:text-5xl lg:text-6xl leading-tight ${className}`}
     >
       {words.map((word, idx) => (
         <span
           key={idx}
-          className="reveal-word inline-block mr-[0.25em] text-text-secondary/30 transition-colors duration-300"
+          className="reveal-word inline-block mr-[0.25em] text-text-secondary/35 transition-colors duration-300"
         >
           {word}
         </span>

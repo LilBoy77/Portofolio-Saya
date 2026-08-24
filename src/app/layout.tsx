@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { generateSiteMetadata, getPersonJsonLd } from "@/lib/metadata";
 import { SmoothScrollProvider } from "@/components/motion/smooth-scroll-provider";
-import { AmbientBackground } from "@/components/visual/ambient-background";
-import { GrainOverlay } from "@/components/visual/grain-overlay";
 import { Navigation } from "@/components/layout/navigation";
-import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { Footer } from "@/components/layout/footer";
+import { Preloader } from "@/components/motion/preloader";
+import { PageTransitionOverlay } from "@/components/motion/page-transition";
 
-const fontSans = Inter({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-inter-tight",
   display: "swap",
 });
 
@@ -31,19 +36,21 @@ export default function RootLayout({
   const jsonLd = getPersonJsonLd();
 
   return (
-    <html lang="id" className={`${fontSans.variable} ${fontMono.variable} dark scroll-smooth`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${interTight.variable} ${fontMono.variable} scroll-smooth`}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-background text-text-primary min-h-screen antialiased selection:bg-accent-soft selection:text-accent overflow-x-hidden">
+      <body className={`${inter.variable} ${interTight.variable} bg-background text-text-primary min-h-screen antialiased selection:bg-accent selection:text-white overflow-x-hidden`}>
+        <Preloader />
+        <PageTransitionOverlay />
         <SmoothScrollProvider>
-          <AmbientBackground />
-          <GrainOverlay />
           <Navigation />
-          <ScrollProgress />
           {children}
           <Footer />
         </SmoothScrollProvider>

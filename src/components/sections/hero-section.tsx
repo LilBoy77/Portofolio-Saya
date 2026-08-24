@@ -1,136 +1,119 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { ArrowDown } from "lucide-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { portfolio } from "@/data/portfolio";
-import { HeroScene } from "../visual/hero-scene";
-import { Button } from "../ui/button";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { CircularButton } from "../ui/circular-button";
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const title1Ref = useRef<HTMLHeadingElement>(null);
-  const title2Ref = useRef<HTMLHeadingElement>(null);
-  const eyebrowRef = useRef<HTMLDivElement>(null);
-  const introRef = useRef<HTMLDivElement>(null);
-  const visualRef = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const containerRef = useRef<HTMLElement>(null);
+  const lineRefs = useRef<(HTMLElement | null)[]>([]);
+  const descRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    const lines = lineRefs.current.filter(Boolean);
+    if (lines.length === 0) return;
 
     const ctx = gsap.context(() => {
-      // Intro animation timeline
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({ delay: 0.1 });
 
-      tl.fromTo(eyebrowRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6 })
-        .fromTo(title1Ref.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.4")
-        .fromTo(title2Ref.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
-        .fromTo(introRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
-        .fromTo(visualRef.current, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.8 }, "-=0.6");
+      tl.fromTo(
+        lines,
+        { yPercent: 105, rotate: 1, opacity: 0, transformOrigin: "0% 100%" },
+        { yPercent: 0, rotate: 0, opacity: 1, duration: 1.1, stagger: 0.08, ease: "power4.out" }
+      );
 
-      // Scroll trigger transformation (0-80% hero scroll)
-      if (sectionRef.current) {
-        gsap.to([title1Ref.current, title2Ref.current], {
-          y: -40,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
+      if (descRef.current) {
+        tl.fromTo(
+          descRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+          "-=0.4"
+        );
       }
-    }, sectionRef);
+
+      if (ctaRef.current) {
+        tl.fromTo(
+          ctaRef.current,
+          { scale: 0.8, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)" },
+          "-=0.4"
+        );
+      }
+    }, containerRef);
 
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  }, []);
 
   return (
     <section
-      id="hero"
-      ref={sectionRef}
-      className="relative min-h-[100svh] w-full flex flex-col justify-between pt-28 pb-12 overflow-hidden"
+      ref={containerRef}
+      className="hero bg-[#999D9E] text-[#1C1D20] relative z-10"
     >
-      <div className="container-custom relative z-10 my-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Headline and Intro Column */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Eyebrow */}
-            <div
-              ref={eyebrowRef}
-              className="inline-flex items-center gap-2 font-mono text-xs text-accent tracking-widest uppercase mb-6 px-3 py-1.5 rounded-full border border-accent/20 bg-accent/5"
+      {/* Main Hero Content */}
+      <main className="hero-main">
+        {/* Name Heading */}
+        <div className="hero-heading">
+          <div className="hero-line-mask">
+            <h1
+              ref={(el) => {
+                lineRefs.current[0] = el;
+              }}
+              className="hero-line-inner hero-name"
             >
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span>{portfolio.hero.eyebrow}</span>
-            </div>
-
-            {/* Main Headline */}
-            <div className="flex flex-col mb-6">
-              <h1
-                ref={title1Ref}
-                className="font-display text-text-primary tracking-tight"
-              >
-                {portfolio.hero.titleLine1}
-              </h1>
-              <h1
-                ref={title2Ref}
-                className="font-display text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-accent to-text-secondary tracking-tight"
-              >
-                {portfolio.hero.titleLine2}
-              </h1>
-            </div>
-
-            {/* Intro Subtext */}
-            <div ref={introRef} className="max-w-xl flex flex-col gap-8">
-              <p className="text-body-large text-text-secondary leading-relaxed">
-                {portfolio.identity.intro}
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
-                <Button href="#projects" size="lg" variant="primary">
-                  Explore Selected Works
-                </Button>
-                <Button href="#contact" size="lg" variant="outline">
-                  Get in Touch
-                </Button>
-              </div>
-            </div>
+              ULIL ARSYAD
+            </h1>
           </div>
-
-          {/* 3D Scene / Fallback Orb Column */}
-          <div
-            ref={visualRef}
-            className="lg:col-span-5 flex items-center justify-center w-full relative z-0"
-          >
-            <HeroScene splineSceneUrl={portfolio.hero.splineSceneUrl} />
+          <div className="hero-line-mask">
+            <h1
+              ref={(el) => {
+                lineRefs.current[1] = el;
+              }}
+              className="hero-line-inner hero-name text-[#1C1D20]/90"
+            >
+              RAMADHAN
+            </h1>
           </div>
         </div>
-      </div>
 
-      {/* Scroll Down Indicator */}
-      <div className="container-custom relative z-10 flex items-center justify-between pt-8 border-t border-border/20 text-xs font-mono text-text-secondary">
-        <div className="flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-          <span>{portfolio.identity.availability}</span>
+        {/* Role Row (Shortened dash, distinct vertical separation) */}
+        <div className="hero-role-row">
+          <div className="hero-line-mask">
+            <p
+              ref={(el) => {
+                lineRefs.current[2] = el;
+              }}
+              className="hero-line-inner hero-role"
+            >
+              - Junior Creative
+            </p>
+          </div>
+          <div className="hero-line-mask">
+            <p
+              ref={(el) => {
+                lineRefs.current[3] = el;
+              }}
+              className="hero-line-inner hero-role text-[#1C1D20]/85"
+            >
+              Full-Stack Developer
+            </p>
+          </div>
         </div>
 
-        <a
-          href="#about"
-          className="group inline-flex items-center gap-2 hover:text-accent transition-colors"
-          aria-label="Scroll down to About section"
-        >
-          <span>SCROLL TO EXPLORE</span>
-          <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1 text-accent" />
-        </a>
-      </div>
+        {/* Hero Bottom: Description & Circular CTA Button */}
+        <div className="hero-bottom">
+          <div ref={descRef}>
+            <p className="hero-description text-[#1C1D20]/85">
+              {portfolio.identity.intro}
+            </p>
+          </div>
+
+          <div ref={ctaRef} className="hero-cta">
+            <CircularButton href="#projects" label="WORK ↘" size="md" icon={false} />
+          </div>
+        </div>
+      </main>
     </section>
   );
 }

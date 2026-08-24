@@ -14,9 +14,9 @@ export function SectionLabel({ number, label, className }: SectionLabelProps) {
         className
       )}
     >
-      <span className="text-accent font-semibold">{"//"} {number}</span>
-      <span className="w-6 h-[1px] bg-border" />
-      <span>{label}</span>
+      <span className="text-accent font-bold">{"//"} {number}</span>
+      <span className="w-8 h-[1px] bg-border" />
+      <span className="font-semibold">{label}</span>
     </div>
   );
 }
