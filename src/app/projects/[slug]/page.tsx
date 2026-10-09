@@ -186,6 +186,44 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </section>
             )}
+
+            {/* Architecture & Tech Stack Details */}
+            {project.techStackDetails && project.techStackDetails.length > 0 && (
+              <section className="flex flex-col gap-6">
+                <span className="font-mono text-xs text-[#455CE9] font-bold tracking-widest uppercase">
+                  04 // ARCHITECTURE & TECH STACK SPECIFICATION
+                </span>
+                <h2 className="font-sans text-3xl text-[#1C1D20] font-medium mb-2">
+                  System Components & Technologies
+                </h2>
+                <div className="overflow-hidden rounded-2xl border border-[#1C1D20]/15 bg-white shadow-sm">
+                  <div className="divide-y divide-[#1C1D20]/10">
+                    {project.techStackDetails.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 hover:bg-[#F8F9FA] transition-colors"
+                      >
+                        <div className="md:col-span-3">
+                          <span className="font-mono text-xs font-bold text-[#455CE9] uppercase block mb-1">
+                            {item.component}
+                          </span>
+                        </div>
+                        <div className="md:col-span-4">
+                          <span className="font-sans font-medium text-sm text-[#1C1D20] block">
+                            {item.technologies}
+                          </span>
+                        </div>
+                        <div className="md:col-span-5">
+                          <p className="text-xs text-[#1C1D20]/75 font-sans leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
           </div>
 
           {/* Sidebar */}

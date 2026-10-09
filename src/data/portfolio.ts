@@ -87,8 +87,108 @@ export const portfolio: PortfolioData = {
   ],
   projects: [
     {
-      slug: "lilticket",
+      slug: "nutrivago",
       number: "01",
+      title: "NutrivaGo",
+      category: "Full-Stack Web Application / Healthy Meal & Catering",
+      year: "2026",
+      summary:
+        "NutrivaGo adalah platform pemesanan makanan sehat harian (Healthy Meal) dan paket langganan katering (Healthy Catering) berbasis web full-stack. NutrivaGo dirancang untuk memenuhi kebutuhan gaya hidup sehat masyarakat modern melalui kurasi menu bergizi, informasi kalori transparan, multi-filter program diet, checkout terstruktur dengan pilihan kurir, integrasi pembayaran digital otomatis melalui Xendit Payment Gateway (Invoice API Sandbox), serta pemantauan status pesanan hingga diterima.",
+      impact:
+        "Full-stack healthy catering ecosystem featuring transparent calorie metrics, automated Xendit sandbox invoice webhooks, Google OAuth 2.0 authentication, and 57 automated integration tests (108 assertions).",
+      role: "Full-Stack Architecture & Development",
+      stack: [
+        "React 19",
+        "Java 17",
+        "Spring Boot 3.3.3",
+        "Spring Security 6",
+        "JWT",
+        "MySQL",
+        "Spring Data JPA",
+        "Tailwind CSS v4",
+        "Xendit",
+        "Google OAuth 2.0",
+        "Postman / Newman",
+        "Vite"
+      ],
+      image: "/images/projects/nutrivago.png",
+      accent: "#166534",
+      liveUrl: "",
+      sourceUrl: "https://github.com/LilBoy77",
+      featured: true,
+      context: "Full-Stack Project 2026",
+      highlights: [
+        "Kurasi menu bergizi & paket langganan katering dengan kalori transparan",
+        "Multi-filter program diet (Vegetarian, Weight Loss, Mom & Kids, Medical Care, Healthy Meal, Smoothie & Detox)",
+        "Integrasi pembayaran otomatis Xendit Invoice API & Webhook Callback status real-time",
+        "Dual Auth: Google Sign-In OAuth 2.0 & Stateless JWT dengan RBAC (ROLE_ADMIN & ROLE_CUSTOMER)",
+        "Admin Console terproteksi di route khusus /admin/login dengan analitik penjualan real-time",
+        "Customer Membership Strategy (Tier loyalitas pelanggan) & manajemen status pengiriman kurir",
+        "57 automated integration tests (108 assertions) dengan Newman CLI mencakup validasi DTO, idempotensi webhook, dan proteksi harga"
+      ],
+      problem:
+        "Mengadopsi pola hidup sehat sering kali terhambat oleh kurangnya transparansi informasi nutrisi/kalori makanan harian, pilihan paket katering yang kaku, serta proses checkout yang berbelit-belit. Di sisi operasional bisnis, pencatatan pesanan manual, rekonsiliasi pembayaran yang lambat, dan tidak adanya visualisasi performa penjualan menghambat skalabilitas penyedia katering sehat.",
+      solution:
+        "NutrivaGo menghadirkan arsitektur full-stack terintegrasi: frontend Single Page Application (SPA) reaktif berbasis React 19 dan Tailwind CSS v4, dipadukan dengan backend enterprise Java 17 Spring Boot 3.3.3 berarsitektur MVC. Sistem menyediakan kalkulasi kalori transparan, checkout otomatis dengan invoice multi-channel Xendit, serta Admin Console khusus untuk memantau performa penjualan secara real-time dan mengelola katalog secara terpusat.",
+      process: [
+        "Merancang skema relasional database MySQL 8.x dengan Hibernate ORM dan Spring Data JPA, menerapkan Single Table Inheritance untuk diferensiasi produk serta pagination/sorting backend.",
+        "Mengimplementasikan sistem keamanan Spring Security 6 dan JJWT 0.12.6 stateless yang dipadukan dengan verifikasi Google ID Token resmi dan Role-Based Access Control (RBAC).",
+        "Mengintegrasikan Xendit Invoice API serta webhook callback handler dengan prinsip idempotensi untuk memastikan pembaruan status pembayaran seketika tanpa duplikasi.",
+        "Membangun frontend SPA yang responsif menggunakan React 19, Vite, Tailwind CSS v4, Lucide React, serta React Context API (AuthContext & CartContext) untuk manajemen sesi dan keranjang belanja.",
+        "Menyusun dan mengeksekusi 57 automated integration tests (108 assertions) dengan Postman dan Newman CLI yang mencakup autentikasi, otorisasi RBAC, validasi skema DTO, dan full CRUD."
+      ],
+      gallery: ["/images/projects/nutrivago.png"],
+      techStackDetails: [
+        {
+          component: "Frontend Framework",
+          technologies: "React 19, Vite, JavaScript (ES Modules)",
+          description: "Single Page Application (SPA) reaktif dengan functional components & hooks (useState, useEffect, useContext, useMemo)."
+        },
+        {
+          component: "Styling & Icons",
+          technologies: "Tailwind CSS v4, Lucide React",
+          description: "Sistem desain modern, responsif desktop & mobile, glassmorphism, dan transisi mikro-interaktif."
+        },
+        {
+          component: "State Management",
+          technologies: "React Context API",
+          description: "AuthContext (JWT session & user profile) dan CartContext (manajemen keranjang belanja)."
+        },
+        {
+          component: "Customer Auth",
+          technologies: "@react-oauth/google",
+          description: "Google Sign-In OAuth 2.0 resmi untuk pendaftaran & login instan pelanggan."
+        },
+        {
+          component: "Backend Framework",
+          technologies: "Java 17, Spring Boot 3.3.3",
+          description: "Enterprise RESTful API dengan arsitektur MVC (Model-View-Controller)."
+        },
+        {
+          component: "Security & Auth",
+          technologies: "Spring Security 6, JJWT 0.12.6, BCrypt",
+          description: "Autentikasi JWT Stateless, verifikasi Google ID Token, serta Role-Based Access Control (RBAC: ROLE_ADMIN, ROLE_CUSTOMER)."
+        },
+        {
+          component: "Database & ORM",
+          technologies: "MySQL 8.x / MariaDB 10.x, Spring Data JPA",
+          description: "Relational database dengan Hibernate ORM, Single Table Inheritance (Produk), JPQL queries, dan pagination/sorting backend."
+        },
+        {
+          component: "Payment Gateway",
+          technologies: "Xendit Invoice API & Webhook Callback",
+          description: "Pembuatan link invoice pembayaran multi-channel otomatis & callback instan status PAID/EXPIRED."
+        },
+        {
+          component: "API Testing",
+          technologies: "Postman, Newman CLI",
+          description: "57 automated integration tests (108 assertions) mencakup autentikasi, otorisasi RBAC, validasi DTO, idempotensi webhook, proteksi harga, dan full CRUD."
+        }
+      ]
+    },
+    {
+      slug: "lilticket",
+      number: "02",
       title: "LilTicket",
       category: "Full-Stack Web Application / Event Ticketing",
       year: "2026",
@@ -133,7 +233,7 @@ export const portfolio: PortfolioData = {
     },
     {
       slug: "tecca-x",
-      number: "02",
+      number: "03",
       title: "Tecca-X",
       category: "Frontend Web Application / AI Directory",
       year: "2025",
@@ -177,7 +277,7 @@ export const portfolio: PortfolioData = {
     },
     {
       slug: "uar-gallery",
-      number: "03",
+      number: "04",
       title: "UAR Gallery",
       category: "Frontend Web Application / Art Gallery",
       year: "2025",
@@ -224,14 +324,14 @@ export const portfolio: PortfolioData = {
       title: "Build",
       subtitle: "Full-Stack Web Development",
       description:
-        "Building scalable full-stack web applications with JavaScript, React.js, Node.js, and Express.js — from REST API design to database integration.",
+        "Building scalable full-stack web applications with Java Spring Boot, React 19, Next.js, Node.js, and Express — from REST API design to database integration and security.",
       skills: [
-        "React.js & Vite",
-        "Node.js & Express.js",
-        "REST API Design",
-        "JWT Authentication & RBAC",
-        "PostgreSQL & Supabase",
-        "State Management (Context API)"
+        "Java 17 & Spring Boot 3",
+        "React 19 & Next.js",
+        "Spring Security 6 & JWT",
+        "MySQL & PostgreSQL",
+        "Spring Data JPA & Hibernate",
+        "REST API Architecture"
       ]
     },
     {
@@ -240,9 +340,9 @@ export const portfolio: PortfolioData = {
       description:
         "Crafting responsive, accessible interfaces with reusable component patterns, clean UX feedback, and smooth micro-interactions.",
       skills: [
-        "Tailwind CSS & Bootstrap",
+        "Tailwind CSS v4 & v3",
         "Framer Motion Animations",
-        "React Router DOM",
+        "React Router DOM & Vite",
         "Responsive, Mobile-First Design",
         "Toast Notifications & UX Feedback",
         "Role-Based UI (Admin & User Views)"
@@ -254,12 +354,12 @@ export const portfolio: PortfolioData = {
       description:
         "Ensuring reliable authentication, secure payment flows, and clean, deployment-ready code across every project.",
       skills: [
-        "Payment Gateway Integration (Xendit) & Webhooks",
-        "Git & GitHub Version Control",
+        "Payment Gateway (Xendit) & Webhooks",
+        "Google OAuth 2.0 Integration",
+        "Postman & Newman CLI Testing",
         "Docker Containerization",
-        "Postman API Testing",
-        "CRUD & Data Validation",
-        "Cross-Browser & Cross-Device Testing"
+        "Git & GitHub Version Control",
+        "CRUD & Data Schema Validation"
       ]
     }
   ],
@@ -282,16 +382,20 @@ export const portfolio: PortfolioData = {
   ],
   skills: [
     "React.js",
+    "Java",
+    "Spring Boot",
     "TypeScript",
     "Next.js",
+    "MySQL",
+    "PostgreSQL",
     "Node.js",
     "Express.js",
-    "PostgreSQL",
-    "Supabase",
     "Tailwind CSS",
-    "Framer Motion",
-    "GSAP",
+    "Spring Security",
+    "JWT",
+    "Xendit",
+    "Docker",
     "Git",
-    "Docker"
+    "Postman"
   ]
 };

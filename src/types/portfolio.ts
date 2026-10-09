@@ -31,6 +31,12 @@ export interface Experience {
   achievements: string[];
 }
 
+export interface TechStackDetail {
+  component: string;
+  technologies: string;
+  description: string;
+}
+
 export interface Project {
   slug: string;
   number: string;
@@ -52,6 +58,7 @@ export interface Project {
   solution?: string;
   process?: string[];
   gallery?: string[];
+  techStackDetails?: TechStackDetail[];
 }
 
 export interface SkillCategory {
